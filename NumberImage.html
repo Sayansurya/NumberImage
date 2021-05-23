@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number-image</title>
+    <style>
+      img {
+        padding: 3px;
+      }
+    </style>
+  </head>
+  <body >
+    <h1 style="text-align: center; color: rgb(21, 45, 124); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+      Image to be displayed here ~
+    </h1>
+    <div style="height: 100px" id="disp"></div>
+    <br />
+    <div style="text-align: center">
+      <h4 style="color: rgb(8, 8, 173);">Input the number here</h4>
+      <input type="text" />
+    </div>
+
+    <script type="text/javascript">
+      countNumber = 1;
+      var arr = [];
+      document.querySelector("input").addEventListener("keypress", function (event) {
+          val = parseInt(event.key);
+          t = setInterval(displayNumbers, 1000);
+        });
+      function displayNumbers() {
+        var p = document.getElementById("disp");
+        if (arr.length > val) {
+          p.removeChild(p.childNodes[arr.length - 1]); //removing child from last position
+          arr.pop();
+          countNumber--;
+        } else if (countNumber <= 9) {
+          var c = document.createElement("IMG");
+          c.src = "img/fig-" + countNumber + ".jpeg";
+          c.height = "100";
+          c.width = "100";
+          arr.push(countNumber);
+          p.appendChild(c); //adding child in the last position
+          countNumber++;
+        }
+
+        if (countNumber == val + 1) {
+          clearInterval(t);
+        }
+        //@sayan
+      }
+    </script>
+  </body>
+</html>
